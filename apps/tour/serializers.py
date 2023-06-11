@@ -38,6 +38,6 @@ class ReportFormSerializer(serializers.ModelSerializer):
         return phone
     
     def create(self, validated_data):
-        send_report_form(name=validated_data['name'], phone=validated_data['phone'], 
+        send_report_form.delay(name=validated_data['name'], phone=validated_data['phone'], 
                         tour=validated_data['tour'])
         return super().create(validated_data)
