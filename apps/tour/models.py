@@ -1,5 +1,5 @@
 from django.db import models
-
+from .utils import normalize_phone
 
 class Tour(models.Model):
     title = models.CharField(verbose_name='Название Тура', max_length=255)
@@ -23,3 +23,10 @@ class TourImages(models.Model):
     image = models.ImageField(verbose_name='Изображния',upload_to='tour_images')
 
    
+class ReportForm(models.Model):
+    name = models.CharField(verbose_name='Имя', max_length=55)
+    phone = models.CharField(verbose_name='Номер', max_length=13)
+    tour = models.ForeignKey(to=Tour, on_delete=models.CASCADE, related_name='report_form')
+
+    def __str__(self) -> str:
+        return f'{self.name} - {self.phone}'

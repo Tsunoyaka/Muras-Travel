@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Tour, TourImages
+from .models import Tour, TourImages, ReportForm
 
 
 class TabularInImages(admin.TabularInline):
@@ -15,3 +15,4 @@ class TourAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Tour, TourAdmin)
+admin.site.register(ReportForm)
